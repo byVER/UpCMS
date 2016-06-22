@@ -1,0 +1,152 @@
+AddDefaultCharset utf-8
+DirectoryIndex index.php
+php_value mbstring.internal_encoding UTF-8
+ErrorDocument 404 /index.php
+
+#php_flag display_startup_errors off
+#php_flag display_errors off
+#php_flag html_errors off
+
+
+  RewriteEngine On 
+
+###############
+##   РАЗНОЕ  ##
+###############
+
+RewriteRule ^rules/?$ moduls/rules.php [L,QSA]
+RewriteRule ^reg/?$ moduls/reg.php [L,QSA]
+RewriteRule ^auth/?$ moduls/auth.php [L,QSA]
+RewriteRule ^users/?$ user/users.php [L,QSA]
+RewriteRule ^kabinet/?$ user/kab.php [L,QSA]
+RewriteRule ^journal/?$ user/journal.php [L,QSA]
+RewriteRule ^log_auth/?$ user/log_auth.php [L,QSA]
+RewriteRule ^exit/?$ moduls/exit.php [L,QSA]
+RewriteRule ^admins/?$ user/admins.php [L,QSA]
+RewriteRule ^smiles?$ user/smiles.php [L,QSA]
+
+###############
+##  НОВОСТИ  ##
+###############
+
+RewriteRule ^news_([0-9]*)?$ moduls/news/news_info.php?id=$1 [L,QSA]
+RewriteRule ^komm_news_([0-9]*)?$ moduls/news/news_komm.php?id=$1 [L,QSA]
+RewriteRule ^komm_news_otv([0-9]*)?$ moduls/news/news_komm_otv.php?id=$1 [L,QSA]
+RewriteRule ^komm_news_edit([0-9]*)?$ moduls/news/news_edit_komm.php?id=$1 [L,QSA]
+RewriteRule ^news?$ moduls/news/news.php [L,QSA]
+RewriteRule ^news_edit([0-9]*)?$ moduls/news/news_edit.php?id=$1 [L,QSA]
+RewriteRule ^news_del([0-9]*)?$ moduls/news/news_del.php?id=$1 [L,QSA]
+
+###########
+##  ЧАТ  ##
+###########
+
+RewriteRule ^chat_rooms?$ moduls/chat/index.php [L,QSA]
+RewriteRule ^del_chat([0-9]*)?$ moduls/chat/chat_del.php?id=$1 [L,QSA]
+RewriteRule ^chat_otv([0-9]*)?$ moduls/chat/chat_otv.php?id=$1 [L,QSA]
+RewriteRule ^edit_room([0-9]*)?$ moduls/chat/room_edit.php?id=$1 [L,QSA]
+RewriteRule ^edit_chat([0-9]*)?$ moduls/chat/chat_edit.php?id=$1 [L,QSA]
+RewriteRule ^chat([0-9]*)?$ moduls/chat/chat.php?id=$1 [L,QSA]
+RewriteRule ^del_room([0-9]*)?$ moduls/chat/room_del.php?id=$1 [L,QSA]
+
+###############
+##  АДМИНКА  ##
+###############
+
+RewriteRule ^admin/edit_admin_level_([0-9]*)?$ admin/edit_adm_level.php?id=$1 [L,QSA]
+RewriteRule ^admin/red_ank_([0-9]*)?$ admin/red_ank.php?id=$1 [L,QSA]
+RewriteRule ^admin/ban_user_([0-9]*)?$ admin/ban_user.php?id=$1 [L,QSA]
+RewriteRule ^admin/razban_user_([0-9]*)?$ admin/razban_user.php?id=$1 [L,QSA]
+RewriteRule ^admin/rules?$ admin/rules.php [L,QSA]
+RewriteRule ^admin?$ admin/index.php [L,QSA]
+RewriteRule ^admin_money?$ admin/money_edit.php [L,QSA]
+RewriteRule ^admin_settings?$ admin/settings.php [L,QSA]
+RewriteRule ^add_news?$ admin/add_news.php [L,QSA]
+RewriteRule ^add_obmen_raz?$ admin/add_obmen_raz.php [L,QSA]
+RewriteRule ^add_dl_raz?$ admin/add_dl_raz.php [L,QSA]
+RewriteRule ^add_razdel_f?$ admin/add_razdel_f.php [L,QSA]
+RewriteRule ^add_podrazdel_f?$ admin/add_podrazdel_f.php [L,QSA]
+RewriteRule ^add_room?$ admin/add_room.php [L,QSA]
+RewriteRule ^add_journal?$ admin/add_journal.php [L,QSA]
+RewriteRule ^admin/paid?$ admin/paid.php [L,QSA]
+RewriteRule ^admin/all_smiles?$ admin/all_smiles.php [L,QSA]
+RewriteRule ^admin/add_smiles?$ admin/add_smiles.php [L,QSA]
+RewriteRule ^admin/smile_del_([0-9]*)?$ admin/smile_del.php?id=$1 [L,QSA]
+RewriteRule ^admin/smile_edit_([0-9]*)?$ admin/smile_edit.php?id=$1 [L,QSA]
+
+################
+##  ЗАГРУЗКИ  ##
+################
+
+RewriteRule ^dl?$ moduls/dl/index.php [L,QSA]
+RewriteRule ^komm_dl_otv([0-9]*)?$ moduls/dl/dl_komm_otv.php?id=$1 [L,QSA]
+RewriteRule ^dl_raz_del([0-9]*)?$ moduls/dl/dl_raz_del.php?id=$1 [L,QSA]
+RewriteRule ^dl_raz_edit([0-9]*)?$ moduls/dl/dl_raz_edit.php?id=$1 [L,QSA]
+RewriteRule ^dl_download([0-9]*)?$ moduls/dl/dl_down.php?id=$1 [L,QSA]
+RewriteRule ^dl_komm([0-9]*)?$ moduls/dl/dl_komm.php?id=$1 [L,QSA]
+RewriteRule ^dl_files([0-9]*)?$ moduls/dl/dl_files.php?id=$1 [L,QSA]
+RewriteRule ^komm_dl_edit([0-9]*)?$ moduls/dl/dl_edit_komm.php?id=$1 [L,QSA]
+RewriteRule ^dl_add_file([0-9]*)?$ moduls/dl/dl_add_files.php?id=$1 [L,QSA]
+RewriteRule ^dl_file([0-9]*)?$ moduls/dl/dl_file.php?id=$1 [L,QSA]
+RewriteRule ^dl_file_del([0-9]*)?$ moduls/dl/dl_file_del.php?id=$1 [L,QSA]
+RewriteRule ^dl_file_edit([0-9]*)?$ moduls/dl/dl_file_edit.php?id=$1 [L,QSA]
+
+#############
+##  ЮЗЕРЫ  ##
+#############
+
+RewriteRule ^mail?$ moduls/mail/mail.php [L,QSA]
+RewriteRule ^log_bans_([0-9]*)?$ user/log_bans.php?id=$1 [L,QSA]
+RewriteRule ^edit_pass?$ user/edit_pass.php [L,QSA]
+RewriteRule ^edit_status?$ user/status.php [L,QSA]
+RewriteRule ^edit_avatar?$ user/avatar.php [L,QSA]
+RewriteRule ^edit_nick?$ user/paid/edit_nick.php [L,QSA]
+RewriteRule ^edit_color?$ user/paid/edit_color.php [L,QSA]
+RewriteRule ^paid?$ user/money.php [L,QSA]
+RewriteRule ^online?$ user/online.php [L,QSA]
+RewriteRule ^user_([0-9]*)?$ user/profile.php?id=$1 [L,QSA]
+
+################
+##  Обменник  ##
+################
+
+RewriteRule ^obmen?$ moduls/obmen/index.php [L,QSA]
+RewriteRule ^obmen_raz_edit([0-9]*)?$ moduls/obmen/obmen_raz_edit.php?id=$1 [L,QSA]
+RewriteRule ^obmen_raz_del([0-9]*)?$ moduls/obmen/obmen_raz_del.php?id=$1 [L,QSA]
+RewriteRule ^obmen_files([0-9]*)?$ moduls/obmen/obmen_files.php?id=$1 [L,QSA]
+RewriteRule ^obmen_add_file([0-9]*)?$ moduls/obmen/obmen_add_files.php?id=$1 [L,QSA]
+RewriteRule ^obmen_file([0-9]*)?$ moduls/obmen/obmen_file.php?id=$1 [L,QSA]
+RewriteRule ^obmen_download([0-9]*)?$ moduls/obmen/obmen_down.php?id=$1 [L,QSA]
+RewriteRule ^obmen_file_edit([0-9]*)?$ moduls/obmen/obmen_file_edit.php?id=$1 [L,QSA]
+RewriteRule ^obmen_file_del([0-9]*)?$ moduls/obmen/obmen_file_del.php?id=$1 [L,QSA]
+RewriteRule ^obmen_komm([0-9]*)?$ moduls/obmen/obmen_komm.php?id=$1 [L,QSA]
+RewriteRule ^komm_obmen_otv([0-9]*)?$ moduls/obmen/obmen_komm_otv.php?id=$1 [L,QSA]
+RewriteRule ^komm_obmen_edit([0-9]*)?$ moduls/obmen/obmen_edit_komm.php?id=$1 [L,QSA]
+
+###############
+##  Беседка  ##
+###############
+
+RewriteRule ^besedka?$ moduls/besedka/index.php [L,QSA]
+RewriteRule ^del_bes([0-9]*)?$ moduls/besedka/bes_del.php?id=$1 [L,QSA]
+RewriteRule ^edit_bes([0-9]*)?$ moduls/besedka/bes_edit.php?id=$1 [L,QSA]
+RewriteRule ^bes_otv([0-9]*)?$ moduls/besedka/bes_otv.php?id=$1 [L,QSA]
+
+#############
+##  ФОРУМ  ##
+#############
+
+RewriteRule ^forum?$ moduls/forum/index.php [L,QSA]
+RewriteRule ^forum/([0-9]*)/?$ moduls/forum/themes.php?id=$1 [L,QSA]
+RewriteRule ^them/([0-9]*)?$ moduls/forum/them.php?id=$1 [L,QSA]
+RewriteRule ^forum/del_razdel/([0-9]*)?$ moduls/forum/raz_del.php?id=$1 [L,QSA]
+RewriteRule ^forum/edit_razdel/([0-9]*)?$ moduls/forum/raz_edit.php?id=$1 [L,QSA]
+RewriteRule ^forum/del_podrazdel/([0-9]*)?$ moduls/forum/podraz_del.php?id=$1 [L,QSA]
+RewriteRule ^forum/del_them/([0-9]*)?$ moduls/forum/them_del.php?id=$1 [L,QSA]
+RewriteRule ^forum/edit_them/([0-9]*)?$ moduls/forum/them_edit.php?id=$1 [L,QSA]
+RewriteRule ^forum/edit_podrazdel/([0-9]*)?$ moduls/forum/podraz_edit.php?id=$1 [L,QSA]
+RewriteRule ^forum/add_them/([0-9]*)?$ moduls/forum/add_them.php?id=$1 [L,QSA]
+RewriteRule ^forum/del_msg/([0-9]*)?$ moduls/forum/msg_del.php?id=$1 [L,QSA]
+RewriteRule ^forum/edit_msg/([0-9]*)?$ moduls/forum/msg_edit.php?id=$1 [L,QSA]
+RewriteRule ^forum/otvet/([0-9]*)?$ moduls/forum/otv_msg.php?id=$1 [L,QSA]
+RewriteRule ^forum/quote/([0-9]*)?$ moduls/forum/quote.php?id=$1 [L,QSA]
